@@ -142,3 +142,7 @@ alias mount="mount | grep -v 'cgroup\|systemd'"
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias pv='pv -tpreb'
 
+# When using sudo, use alias expansion (otherwise sudo ignores your aliases)
+alias sudo='sudo '
+alias sudo='sudo '
+
