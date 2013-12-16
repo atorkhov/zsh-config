@@ -145,4 +145,6 @@ alias pv='pv -tpreb'
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
 alias sudo='sudo '
 
-alias yum='dnf'
+if [ -x /usr/bin/dnf ]; then
+    alias yum='dnf'
+fi
