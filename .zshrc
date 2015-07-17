@@ -97,8 +97,8 @@ setopt pushd_silent
 
 ### Настройка журнала команд
 export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=18192
-export SAVEHIST=18192
+export HISTSIZE=131072
+export SAVEHIST=131072
 
 #--------------------------------------------------#
 # Игнорировать все повторения команд
@@ -119,6 +119,8 @@ export OPENSSL_CONF=~/CA/caconfig.cnf
 
 export MANSECT=1:1p:8:2:3:3p:4:5:6:7:9:0p:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x:Cg:CgFX
 
+export ORACLE_HOME=/usr/lib/oracle/11.2/client64/
+
 # Qemu audio presets
 #export QEMU_AUDIO_DRV=alsa
 ##export QEMU_AUDIO_DAC_FIXED_FREQ=48000
@@ -129,16 +131,16 @@ export MANSECT=1:1p:8:2:3:3p:4:5:6:7:9:0p:n:l:p:o:1x:2x:3x:4x:5x:6x:7x:8x:Cg:CgF
 # RPM Fusion config
 export PLAGUE_CLIENT_CONFIG=~/.plague-client-rpmfusion.cfg
 
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 export MPD_HOST=localhost
 
 # User specific aliases and functions
 
+alias grep='grep --color=auto'
 alias bc='bc -l'
 alias kojirf='koji -c ~/.koji/rf-config'
-alias mount="mount | grep -v 'cgroup\|systemd'"
+#alias mount="mount | grep -v 'cgroup\|systemd'"
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias pv='pv -tpreb'
 
@@ -148,3 +150,6 @@ alias sudo='sudo '
 if [ -x /usr/bin/dnf ]; then
     alias yum='dnf'
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

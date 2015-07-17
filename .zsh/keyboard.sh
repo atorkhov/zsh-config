@@ -206,6 +206,43 @@ kbd_expand
 
 key[Alt-Enter]='^[^M'
 
+case $TERM in
+rxvt-unicode)
+    key[Ctrl-Delete]="^[[3^"
+    key[Ctrl-Up]="^[Oa"
+    key[Ctrl-Down]="^[Ob"
+    key[Ctrl-Right]="^[Oc"
+    key[Ctrl-Left]="^[Od"
+    key[Alt-Up]="^[^[[A"
+    key[Alt-Down]="^[^[[B"
+    key[Alt-Right]="^[^[[C"
+    key[Alt-Left]="^[^[[D"
+    ;;
+xterm*|roxterm|gnome-terminal|screen)
+    if [ -z "$TMUX" ]; then
+        key[Ctrl-Delete]="^[[3;5~"
+        key[Ctrl-Up]="^[[1;5A"
+        key[Ctrl-Down]="^[[1;5B"
+        key[Ctrl-Right]="^[[1;5C"
+        key[Ctrl-Left]="^[[1;5D"
+        key[Alt-Up]="^[[1;3A"
+        key[Alt-Down]="^[[1;3B"
+        key[Alt-Right]="^[[1;3C"
+        key[Alt-Left]="^[[1;3D"
+    else
+        key[Ctrl-Delete]="^[[3^"
+        key[Ctrl-Up]="^[OA"
+        key[Ctrl-Down]="^[OB"
+        key[Ctrl-Right]="^[OC"
+        key[Ctrl-Left]="^[OD"
+        key[Alt-Up]="^[^[[A"
+        key[Alt-Down]="^[^[[B"
+        key[Alt-Right]="^[^[[C"
+        key[Alt-Left]="^[^[[D"
+    fi
+    ;;
+esac
+
 #for k in ${(k)key}; do
 #    printf '"%s": "%s"\n' $k "${(V)key[$k]}"
 #done
