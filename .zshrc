@@ -43,7 +43,9 @@ function git_branch() {
 }
 
 PROMPT='[%n@%m %1~]%{$fg_no_bold[green]%}%(#.#.$)%{$reset_color%} '
-RPROMPT='%{$fg[yellow]%}$(git_branch)%{$reset_color%}$(git_status) $(date +%H:%M)'
+if [[ ! /proc/$PPID/exe -ef /usr/bin/mc ]]; then
+    RPROMPT='%{$fg[yellow]%}$(git_branch)%{$reset_color%}$(git_status) $(date +%H:%M)'
+fi
 
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns `cat /etc/passwd | awk -F ":" '{ if($3<1000) print $1 }'`
